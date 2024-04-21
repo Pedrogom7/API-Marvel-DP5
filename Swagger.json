@@ -1,0 +1,63 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API da Marvel",
+    "description": "API para busca de informações da Marvel e CRUD de quadrinhos, personagens e criadores.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/marvel/characters": {
+      "get": {
+        "summary": "Buscar personagens da Marvel",
+        "responses": {
+          "200": {
+            "description": "Lista de personagens da Marvel"
+          }
+        }
+      }
+    },
+    "/marvel/comics": {
+      "get": {
+        "summary": "Buscar quadrinhos da Marvel",
+        "responses": {
+          "200": {
+            "description": "Lista de quadrinhos da Marvel"
+          }
+        }
+      }
+    },
+    "/marvel/creators": {
+      "get": {
+        "summary": "Buscar criadores da Marvel",
+        "responses": {
+          "200": {
+            "description": "Lista de criadores da Marvel"
+          }
+        }
+      }
+    },
+    "/comics": {
+      "get": {
+        "summary": "Buscar quadrinhos locais",
+        "responses": {
+          "200": {
+            "description": "Lista de quadrinhos armazenados localmente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Adicionar quadrinho",
+        "responses": {
+          "200": {
+            "description": "Quadrinho adicionado com sucesso"
+          }
+        }
+      }
+    }
+  }
+}
