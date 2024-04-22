@@ -1,12 +1,22 @@
-import configApi from "../config.api";
-import QuadrinhoSchema from '../Schema/quadrinho.schema'
-class QuadrinhoService{
-    async create(){
-        const data = await configApi.get();
-        const quadrinhoCreated =  await QuadrinhoSchema.create(data);
-        return quadrinhoCreated;
+// quadrinho.service.ts
+import quadrinhoSchema from "../Schema/quadrinho.schema";
+
+class QuadrinhoService {
+    async list() {
+        return await quadrinhoSchema.find();
     }
 
+    async create(data: any) {
+        return await quadrinhoSchema.create(data);
+    }
+
+    async update(id: string, data: any) {
+        return await quadrinhoSchema.findByIdAndUpdate(id, data, { new: true });
+    }
+
+    async delete(id: string) {
+        return await quadrinhoSchema.findByIdAndDelete(id);
+    }
 }
 
 export default new QuadrinhoService();

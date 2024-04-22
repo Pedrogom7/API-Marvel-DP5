@@ -1,15 +1,21 @@
-//service guarda os metodos da regra negocio 
-import configApi from "../config.api";
-import personagemSchema from "../Schema/personagem.schema"
-class PersonagemService{
+import personagemSchema from "../Schema/personagem.schema";
 
-    //metodo create 
-    async create(){
-        const data = await configApi.get();
-        const personagemCreated =  await personagemSchema.create(data);
-        return personagemCreated;
+class PersonagemService {
+    async list() {
+        return await personagemSchema.find();
     }
 
+    async create(data: any) {
+        return await personagemSchema.create(data);
+    }
+
+    async update(id: string, data: any) {
+        return await personagemSchema.findByIdAndUpdate(id, data, { new: true });
+    }
+
+    async delete(id: string) {
+        return await personagemSchema.findByIdAndDelete(id);
+    }
 }
 
 export default new PersonagemService();
