@@ -1,15 +1,11 @@
+
 import { Schema, model } from 'mongoose';
 
 const quadrinhoSchema = new Schema(
     {
         title: String,
         description: String,
-        dates: [
-            {
-                type: String,
-                date: Date
-            }
-        ],
+        dates: Object,
         thumbnail: {
             path: String,
             extension: String

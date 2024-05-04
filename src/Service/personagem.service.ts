@@ -1,3 +1,4 @@
+// personagem.service.ts
 import personagemSchema from "../Schema/personagem.schema";
 
 class PersonagemService {
@@ -6,7 +7,18 @@ class PersonagemService {
     }
 
     async create(data: any) {
-        return await personagemSchema.create(data);
+        // Verifica se o array de URLs está definido antes de tentar mapeá-lo
+        const formattedData = {
+            name: data.name,
+            description: data.description,
+            resourceURI: data.resourceURI,
+            urls: data.urls ? data.urls.map((url: any) => ({
+                type: url.type,
+                url: url.url
+            })) : [] // Se o array de URLs estiver indefinido, inicializa como um array vazio
+        };
+
+        return await personagemSchema.create(formattedData);
     }
 
     async update(id: string, data: any) {
@@ -19,4 +31,3 @@ class PersonagemService {
 }
 
 export default new PersonagemService();
-

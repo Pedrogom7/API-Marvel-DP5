@@ -1,10 +1,11 @@
-import fetch, { Response } from 'node-fetch';
+// externalApi.ts
+import fetch from 'isomorphic-fetch';
 import MarvelResponse from './Interfaces/marvelResponse.interface';
 
 class ExternalApiService {
   public static async getMarvelData(url: string): Promise<any[]> {
     try {
-      const response: Response = await fetch(url);
+      const response = await fetch(url);
       const responseData = await response.json();
 
       if (ExternalApiService.isMarvelResponse(responseData)) {

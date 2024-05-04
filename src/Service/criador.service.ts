@@ -1,12 +1,21 @@
+// criador.service.ts
 import criadorSchema from "../Schema/criador.schema";
 
-class PersonagemService {
+class CriadorService {
     async list() {
         return await criadorSchema.find();
     }
 
     async create(data: any) {
-        return await criadorSchema.create(data);
+        // Verifica se o array de contribuições está definido antes de tentar mapeá-lo
+        const formattedData = {
+            name: data.name,
+            funcao: data.funcao,
+            resourceURI: data.resourceURI,
+            contribuicao: data.contribuicao ? data.contribuicao.map((contribuicao: any) => contribuicao.resourceURI) : [] // Extrai apenas os resourceURIs das contribuições
+        };
+
+        return await criadorSchema.create(formattedData);
     }
 
     async update(id: string, data: any) {
@@ -18,5 +27,4 @@ class PersonagemService {
     }
 }
 
-export default new PersonagemService();
-
+export default new CriadorService();

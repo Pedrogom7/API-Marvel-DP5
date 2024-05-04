@@ -2,8 +2,12 @@ import { Router } from "express";
 import personagemController from "./src/Controller/personagem.controller";
 import quadrinhoController from "./src/Controller/quadrinho.controller";
 import criadorController from "./src/Controller/criador.controller";
+import { buscarDadosMarvel } from "./src/Controller/marvel.controller";
 
 const routes = Router();
+
+//Rotas para busca na API da Marvel
+routes.get('/buscarDadosMarvel', buscarDadosMarvel);
 
 // Rotas para Personagem
 routes.get('/personagem', personagemController.list);
@@ -12,15 +16,15 @@ routes.put('/personagem/:id', personagemController.update);
 routes.delete('/personagem/:id', personagemController.delete);
 
 // Rotas para Quadrinho
-routes.get('/quadrinhos', quadrinhoController.list);
-routes.post('/quadrinhos', quadrinhoController.create);
-routes.put('/quadrinhos/:id', quadrinhoController.update);
-routes.delete('/quadrinhos/:id', quadrinhoController.delete);
+routes.get('/quadrinho', quadrinhoController.list);
+routes.post('/quadrinho', quadrinhoController.create);
+routes.put('/quadrinho/:id', quadrinhoController.update);
+routes.delete('/quadrinho/:id', quadrinhoController.delete);
 
 // Rotas para Criador
-routes.get('/criadores', criadorController.list);
-routes.post('/criadores', criadorController.create);
-routes.put('/criadores/:id', criadorController.update);
-routes.delete('/criadores/:id', criadorController.delete);
+routes.get('/criador', criadorController.list);
+routes.post('/criador', criadorController.create);
+routes.put('/criador/:id', criadorController.update);
+routes.delete('/criador/:id', criadorController.delete);
 
 export { routes };

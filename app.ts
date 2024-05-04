@@ -20,9 +20,9 @@ class App {
     try {
       mongoose.set("strictQuery", true)
       await mongoose.connect('mongodb://0.0.0.0:27017/marvel')
-      console.log('Connect dabase successfully!')
+      console.log('Conectado ao banco de dados!')
     } catch (error) {
-      console.log('Cannot connect to database, error: ', error)
+      console.log('Não pode conectar ao banco de dados, erro: ', error)
     }
   }
 
